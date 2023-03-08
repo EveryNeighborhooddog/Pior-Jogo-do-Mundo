@@ -1,0 +1,139 @@
+#include <iostream>
+
+using namespace std;
+void salacentral();
+void sala1();
+void sala2();
+void regras();
+void creditos();
+
+int main()
+{
+    cout<< "\nO JOGO MAIS BESTA DO MUNDO\n\t  MENU\n\n";
+    int c;
+    cout<< "insira o que deseja fazer: "<<endl;
+    cout<<"[1] Comecar\n"<<"[2] Creditos\n"<<"[3] Sair\n"<<"[4] regras \n"<<"Comando: ";
+    cin>>c;
+    if(c==1)
+        salacentral();
+    if(c==2)
+        {creditos();
+        main();
+        cout<<endl;}
+    if(c==3)
+        return 0;
+    if(c==4)
+        {regras();
+        main();}
+    else
+        {cout<< "insira um comando valido\n";
+        main();}
+    return 0;
+}
+
+void salacentral()
+{
+    string comando;
+    cout<< "voce esta na sala central\nExite um corredor a norte e uma porta a oeste.\n\nComando: ";
+    cin>>comando;
+    if(comando=="norte")
+        {cout<< "\nvoce foi norte\n";
+        sala1();}
+    if(comando=="oeste")
+        {cout<< "\nvoce foi oeste\n";
+        sala2();}
+    if(comando=="sul")
+    {
+        cout<< "\nA porta esta trancada.\n";
+        salacentral();
+    }
+    if(comando=="regras")
+        {regras();
+        salacentral();}
+    else
+    {
+        cout<< "insira um comando valido.\n";
+        salacentral();
+    }
+}
+void sala1()
+{
+    string c;
+    cout<< "Voce esta na sala 1\nha uma porta aqui\n\ncomando: ";
+    cin>> c;
+    if(c=="sul")
+        {cout<< "voce foi sul";
+        salacentral();}
+    if(c=="porta")
+    {
+        cout<< "\nvoce deseja entrar na porta?\nComando: ";
+        cin>>c;
+        if(c=="nao")
+            sala1();
+        if(c=="sim")
+        {
+         cout<< "\n\n\nVOCE ENCONTROU A SAIDA!!!!!\n\n\n";
+         main();
+        }
+        else{cout<< "insira um comando valido.\n";
+        sala1();}
+    }
+    if(c=="regras")
+        {regras();
+        sala1();}
+    else
+    {
+        cout<< "Insira um comando valido.\n";
+        sala1();
+    }
+}
+void sala2()
+{
+    string c;
+    bool chave;
+    cout<< "\nVoce esta na sala 2\nha uma chave aqui\n\nComando: ";
+    cin>>c;
+    if(c=="leste")
+    {
+        cout<< "\nVoce foi leste\n";
+        salacentral();
+    }
+    if(c=="chave"&&chave==false)
+    {
+        cout<< "\nvoce quer pegar a chave?\n Comando: ";
+        cin>>c;
+        if (c=="nao")
+            sala2();
+        if(c=="sim")
+        {   cout<<"\nVoce pegou a chave.\n";
+            chave=true;
+            sala2();
+        }
+    }
+    if(c=="regras")
+        {regras();
+        sala2();}
+    else
+    {
+        cout<< "insira um comando valido\n";
+        sala2();
+    }
+}
+void regras()
+{
+    cout<< "-----------------------------------------------\n";
+    cout<< "\t regras do jogo\n";
+    cout<< "Voce so pode se mover nas direcoes cardinais: \nnorte, sul, leste, oeste.\n";
+    cout<<"Uma vez que voce se move, pode usar a direcao\ncontraria para voltar.\nEx: \n";
+    cout<<"Se voce for 'norte', pode digitar 'sul' para voltar.\n";
+    cout<< "Para interagir com um objeto, digite o nome dele.\n";
+    cout<<"\nUse apenas uma palavra por vez.\n\n\nO seu objetivo eh achar a saida.\n";
+    cout<<"Para rever as regras, digite 'regras' na barra de comando\n\nBoa Sorte!\n";
+    cout<< "-----------------------------------------------\n";
+
+}
+void creditos()
+{
+    cout<< "\n\nCriador: Andre Mercante Nekatschalow\n";
+    cout<< "Codificado em C++\nPrograma: Code Blocks\n\n";
+}
